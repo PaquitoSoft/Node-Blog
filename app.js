@@ -6,7 +6,7 @@
 var express = require('express');
 
 var errorHandler = require('./error_handler.js');
-var controller = require('./controller');
+var controller = require('./controller.js');
 
 var mongoose = require('mongoose');
 var mongoDb = require('mongodb').Db,

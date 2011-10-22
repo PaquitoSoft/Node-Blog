@@ -171,6 +171,15 @@ exports.init = function(expressApp) {
             res.redirect('/admin');
         });
      });
+     expressApp.get('/admin/posts', function(req, res, next) {
+        domain.Post.find({}).desc('postedAt').exec(function(err, posts) {
+            if (err) return next(err);
+            res.render('post/list', {
+                layout: 'adminLayout',
+                userPosts: posts
+            });
+        });
+     });
 
 };
 

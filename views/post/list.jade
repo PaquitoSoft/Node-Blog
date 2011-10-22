@@ -1,0 +1,26 @@
+
+div#crud
+    div#crudContent
+        div#crudList.Posts    
+            h2#crudListTitle Posts
+
+            div#crudListSearch
+                form(action="#", method="GET", accept-charset="utf-8")
+                    input(type="text", name="search", value="")
+                    input(type="submit", value="Search")
+
+            div#crudListTable
+                table
+                    thead
+                        tr: th Posts
+                    - var postClasses = []
+                    each post, i in userPosts
+                        - postClasses = [(i % 2 == 0) ? 'odd' : 'even']
+                        tr(class=postClasses)
+                            a(href='/admin/post/' + post.id) #{post.author} - #{post.title}                
+            
+            div#crudListPagination
+                p.crudCount #{userPosts.length} posts
+
+            p#crudListAdd
+                a(href="#") Add Post

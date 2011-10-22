@@ -3,6 +3,7 @@ html
   head
     title Administration
     meta(charset='utf-8')
+    link(rel='stylesheet', href='/stylesheets/crud.css')
     link(rel='stylesheet', href='/stylesheets/main.css')
     script(type='text/javascript', href='/javascripts/jquery-1.5.2.min.js')
     scipt(type='text/javascript', href='/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js')
@@ -17,7 +18,7 @@ html
         ul#adminMenu
             li.selected: a(href="/admin") My Posts
             - if ('admin' == currentUserRole)
-                li: a(href="#") Posts
+                li: a(href="/admin/posts") Posts
                 li: a(href="#") Tags
                 li: a(href="#") Comments
                 li: a(href="#") Users
