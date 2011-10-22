@@ -1,4 +1,5 @@
 .DS_Store
 .settings.xml
-node_modules/**/* 
+.monitor
+node_modules/ 
 startIDE.command
