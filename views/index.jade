@@ -1,0 +1,11 @@
+//- Home page
+
+// Last post written
+!= partial('partials/post', { object: frontPost, as: 'post', locals: { mode: 'home' } })
+
+// Another fresh posts
+div.older-posts
+    h3 Older posts 
+        span.from from this blog
+    != partial('partials/post', { collection: freshPosts, as: 'post', locals: { mode: 'teaser' } })
+    

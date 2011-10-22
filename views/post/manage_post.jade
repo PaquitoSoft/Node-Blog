@@ -1,0 +1,21 @@
+
+- var currentPost;
+- if (typeof(error) == 'undefined')
+    - currentPost = post;
+
+h3 #{currentPost ? 'Edit' : 'Write'}, 
+    span a new post
+
+form(action="/admin/post", method="POST", accept-charset="utf-8")
+    input(type="hidden", name="postId", value="#{currentPost ? currentPost.id : ''}")
+    p
+        label Post title:
+        input(type="text", size="50", name="title", value="#{currentPost ? currentPost.title : ''}", class="")
+    p
+        label Write here:
+        textarea(name="postContent", class="") #{currentPost ? currentPost.content : ''}        
+    p
+        label Enter some tags:
+        input(type="text", size="50", name="tags", value="#{currentPost ? currentPost.tags : ''}")
+    p
+        input(type="submit", value="Publish this post to the blog")

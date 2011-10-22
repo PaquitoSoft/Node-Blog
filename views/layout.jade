@@ -1,0 +1,28 @@
+!!! 5
+html
+  head
+    title= title ? title : 'Yabe'
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    script(type='text/javascript', src='/javascripts/jquery-1.5.2.min.js')
+    script(type='text/javascript', src='/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js')
+  body
+    div#header
+        div#logo yabe.
+        - if (typeof(error) == 'undefined')
+            ul#tools
+              li
+                - if ('' == currentUserName)
+                    a(href='/login') Login to write something
+                - else 
+                    a(href='/logout') #{currentUserName} (logout)
+        div#title
+            span.about About this blog
+            h1
+              a(href='/') Yet another blog engine
+            h2 We will write about nothing
+    div#main!= body        
+    p#footer 
+        | Yabe is a (not that) powerful blog engine built with the 
+        a(href='http://www.playframework.org') Play! framework 
+        | as a tutorial application.

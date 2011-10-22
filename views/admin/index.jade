@@ -1,0 +1,14 @@
+
+h3 Welcome #{currentUserName}, 
+    span you have written #{userPosts.length} posts so far
+
+- var postClasses = []
+each post, i in userPosts
+    - postClasses = ['post', (i % 2 == 0) ? 'odd' : 'even']
+    p(class=postClasses)
+        a(href='/admin/post/' + post.id) #{post.title}
+    
+p#newPost
+    a(href="/admin/post/") 
+        span +
+        &nbsp;write a new post

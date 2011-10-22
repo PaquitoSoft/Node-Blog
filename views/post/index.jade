@@ -1,0 +1,29 @@
+
+//- Show the post details
+!= partial('../partials/post', { object: post, locals: { mode: 'full' } })
+
+//- Allow users to add comments
+h3 Post a commet
+form(action='/post/' + post.id + '/comments', method='POST', accept-charset='utf-8')
+    p
+        label(for='author') Your name:
+        input(type='text', name='author', value='')
+    p
+        label(for='content') Your message:
+        textarea#content(name='content')
+    p
+        input(type='submit', value='Submit your comment')
+
+script
+    $(function() {        
+        // Expose the form        
+        $('form').click(function() {            
+            $('form').expose({api: true}).load();        
+        });                
+
+        // If there is an error, focus to the form        
+        if ($('form .error').size()) {            
+            $('form').expose({api: true, loadSpeed: 0}).load();            
+            $('form input[type=text]').get(0).focus();        
+        }    
+    });

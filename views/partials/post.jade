@@ -1,0 +1,40 @@
+//- Display a post in one of these modes: 'full', 'home', 'teaser'
+
+//- TODO Falta por añadir la clase del tipo de renderizado proporcionado en el h2.post-title #{mode ? ('.' + mode) : ''}
+div.post
+    h2.post-title 
+        a(href='/post/' + post.id) #{post.title}
+    div.post-metadata
+        span.post-author by #{post.author}, 
+        span.post-date #{post.postedAt}
+
+        - if ('full' != mode)
+            span.post-comments 
+                &nbsp;|&nbsp;
+                - if (post.comments.length > 0) 
+                    | #{post.comments.length} comments, latest by #{post.comments[0].author}
+                - else 
+                    | No comments
+
+        - if (post.tags.lenght > 0)
+            span.post-tags
+                Tagged
+                each tag in post.tags
+                    a href(#) tag,
+    
+    - if ('teaser' != mode)
+        div.post-content
+            div.about Detail        
+            #{post.content}
+
+- if ('full' == mode && post.comments.length > 0)
+    div.comments
+        h3 #{post.comments.lenght} comments
+        each comment in post.comments
+            div.comment
+                div.comment-metadata
+                    span.comment-author #{comment.author},
+                    span.comment-date #{comment.postedAt}
+                div.comment-content
+                    div.about Detail: 
+                    #{comment.content}

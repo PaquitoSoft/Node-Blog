@@ -1,0 +1,28 @@
+!!! 5
+html
+  head
+    title Administration
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    script(type='text/javascript', href='/javascripts/jquery-1.5.2.min.js')
+    scipt(type='text/javascript', href='/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js')
+  body#admin
+    div#header
+        div#logo yabe.
+            span &nbsp;administration
+        ul#tools
+          li                        
+            a(href='/logout') #{currentUserName} (logout)
+    div#main
+        ul#adminMenu
+            li.selected: a(href="/admin") My Posts
+            - if ('admin' == currentUserRole)
+                li: a(href="#") Posts
+                li: a(href="#") Tags
+                li: a(href="#") Comments
+                li: a(href="#") Users
+        div!= body
+    p#footer .
+        Yabe ia a (not that) powerful blog engine built with the a(href='http://www.playframework.org') Play! framework
+        as a tutorial application.
+        

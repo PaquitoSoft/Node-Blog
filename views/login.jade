@@ -1,0 +1,21 @@
+!!! 5
+
+html
+    head
+        title: Login
+        meta(charset='utf-8')
+        link(rel='stylesheet', href='/stylesheets/secure.css')
+        script(type='text/javascript', src='/javascripts/jquery-1.5.2.min.js')
+    body
+        div#login
+            form(action='/login', method='POST', accept-charset='utf-8')
+                p#username-field
+                    label(for='username')
+                        Your email:
+                    input(type='text', name='username', id='username', value='')
+                p#password-field
+                    label(for='password')
+                        Your password:
+                    input(type='password', name='password', id='password', value='')
+                p#signin-field
+                    input(type='submit', id='signin', value='Log in now')
