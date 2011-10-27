@@ -133,7 +133,7 @@ exports.init = function(expressApp) {
     });
 
     /**
-     * Managing post controllers
+     * Managing posts
      */
      expressApp.get('/admin/post/:postId?', function(req, res, next) {
         console.log("Controller::adminPostGet# Entering...");
@@ -180,6 +180,29 @@ exports.init = function(expressApp) {
             });
         });
      });
+     
+     /**
+      * Managing tags
+      */
+      expressApp.get('/admin/tags', function(req, res, next) {
+        /*domain.Post.find({}, ['tags'], function(err, tags) {
+            if (err) return next(err);
+            var result = [];
+            for (var i = 0; i < tags.length; i++) {
+                result = result.concat(tags[i].tags);
+            }            
+            res.render('tag/list', {
+                layout: 'adminLayout',
+                allTags: result
+            });
+        });*/
+        domain.Post.findAllTags(function(err, tags) {
+            if (err) return next(err);
+            res.render('tag/list', {
+                layout: 'adminLayout',
+                allTags: tags
+            });
+        });
+      });
 
 };
-

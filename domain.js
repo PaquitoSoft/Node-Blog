@@ -38,6 +38,17 @@ PostSchema.statics.byAuthor = function(authorLogin, callback) {
     console.log("PostSchema::byAuthor# Author: " + authorLogin);
     this.find({ author: authorLogin }, [], { desc: 'postedAt' }, callback);
 };
+PostSchema.statics.findAllTags = function(callback) {
+    console.log("PostSchema::findAllTags# entering...");    
+    this.find({}, ['tags'], function(err, tags) {
+            if (err) return callback(err);
+            var result = [];
+            for (var i = 0; i < tags.length; i++) {
+                result = result.concat(tags[i].tags);
+            }
+            callback(null, result);
+    });
+};
 var Post = Mongoose.model('Post', PostSchema);
 console.log("Post DO defined!");
 

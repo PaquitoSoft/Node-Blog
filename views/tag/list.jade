@@ -1,8 +1,8 @@
 
 div#crud
     div#crudContent
-        div#crudList.Posts    
-            h2#crudListTitle Posts
+        div#crudList.Tags    
+            h2#crudListTitle Tags
 
             div#crudListSearch
                 form(action="#", method="GET", accept-charset="utf-8")
@@ -12,15 +12,14 @@ div#crud
             div#crudListTable
                 table
                     thead
-                        tr: th Posts
+                        tr: th Tags
                     - var i = 0;
                     tbody
-                         each post, i in userPosts 
+                         each tag, i in allTags 
                             tr(class=(i % 2 == 0) ? 'odd' : 'even') 
-                                a(href='/admin/post/' + post.id) 
-                                    #{post.author} - #{post.title}                        
+                                a(href='/admin/tag/' + tag) #{tag}
             div#crudListPagination
-                p.crudCount #{userPosts.length} posts
+                p.crudCount #{allTags.length} tags
 
             p#crudListAdd
-                a(href="/admin/post") Add Post
+                a(href="/admin/tag") Add Tag

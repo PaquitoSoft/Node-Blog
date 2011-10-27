@@ -44,6 +44,7 @@ var secondBobPost = new domain.Post({
     author: bob.email,
     postedAt: '2011-10-08 18:10:13',
     content: 'Well, this is just a test post',
+    tags: ['tv shows'],
     comments: [{
         author: 'Hiro Nakamura',
         content: 'Is this a useless post?'
