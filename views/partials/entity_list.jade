@@ -1,0 +1,25 @@
+- var title = capitalize(pluralName)
+div#crud
+    div#crudContent
+        div(class=title)#crudList
+            h2#crudListTitle #{title}
+
+            div#crudListSearch
+                form(action="/admin/" + pluralName, method="GET", accept-charset="utf-8")
+                    input(type="text", name="search", value="")
+                    input(type="submit", value="Search")
+
+            div#crudListTable
+                table
+                    thead
+                        tr: th #{title}
+                    tbody
+                         each entity, i in entities 
+                            tr
+                                td
+                                    a(href='/admin/' + singleName + '/' + entity.id) #{display(entity)}
+            div#crudListPagination
+                p.crudCount #{entities.length} #{title}
+
+            p#crudListAdd
+                a(href="/admin/" + singleName) Add #{singleName}

@@ -1,0 +1,28 @@
+div#crud
+    div#crudContent
+        div#crudList.Comments
+            h2#crudListTitle Comments
+
+            div#crudListSearch
+                form(action="/admin/comments", method="GET", accept-charset="utf-8")
+                    input(type="text", name="search", value="")
+                    input(type="submit", value="Search")
+
+            div#crudListTable
+                table
+                    thead
+                        tr: th Author
+                        tr: th Content
+                        tr: th Post
+                        tr: th Posted at
+                    tbody
+                         each comment, i in comments 
+                            tr
+                                td: 
+                                td
+                                    a(href='/admin/comment/' + comment.id) #{comment.brief}
+            div#crudListPagination
+                p.crudCount #{entities.length} #{title}
+
+            p#crudListAdd
+                a(href="/admin/" + singleName) Add #{singleName}

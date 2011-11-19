@@ -120,9 +120,12 @@
 #crud #crudContent table td {
 	border-bottom: 1px solid #eee;
 }
-
+/*
 #crud #crudContent table tr.even {
 	background: #f9f9f9;
+}*/
+#crud #crudContent table tr:nth-child(even) {
+    background: #f9f9f9;
 }
 
 #crud #crudContent table tr:last-child td {

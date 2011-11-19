@@ -67,11 +67,14 @@ app.configure(function(){
   
   // This is the way we can register functions so we have them 
   // globally available in Jade templates
-  app.set('view options', {
-    exists: function(variable) {
-        return (typeof(variable) != 'undefined');
-    }
+  app.set('view options', {    
   });
+});
+
+app.helpers({
+    capitalize: function(text) {
+        return text.charAt(0).toUpperCase() + text.slice(1);
+    }
 });
 
 // This is the way we can register more common local variables 

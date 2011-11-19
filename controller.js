@@ -174,9 +174,14 @@ exports.init = function(expressApp) {
      expressApp.get('/admin/posts', function(req, res, next) {
         domain.Post.find({}).desc('postedAt').exec(function(err, posts) {
             if (err) return next(err);
-            res.render('post/list', {
+            res.render('admin/list', {
                 layout: 'adminLayout',
-                userPosts: posts
+                entities: posts,
+                singleName: 'post',
+                pluralName: 'posts',
+                display: function(post) {
+                    return post.author + " - " + post.title;
+                }
             });
         });
      });
@@ -185,24 +190,35 @@ exports.init = function(expressApp) {
       * Managing tags
       */
       expressApp.get('/admin/tags', function(req, res, next) {
-        /*domain.Post.find({}, ['tags'], function(err, tags) {
-            if (err) return next(err);
-            var result = [];
-            for (var i = 0; i < tags.length; i++) {
-                result = result.concat(tags[i].tags);
-            }            
-            res.render('tag/list', {
-                layout: 'adminLayout',
-                allTags: result
-            });
-        });*/
         domain.Post.findAllTags(function(err, tags) {
             if (err) return next(err);
-            res.render('tag/list', {
+            res.render('admin/list', {
                 layout: 'adminLayout',
-                allTags: tags
+                entities: tags,
+                singleName: 'tag',
+                pluralName: 'tags',
+                display: function(tag) {
+                    return tag;
+                }
             });
         });
       });
-
+    
+    /**
+     * Managing users
+     */
+     expressApp.get('/admin/users', function(req, res, next) {
+        domain.User.find({}, function(err, users) {
+            if (err) return next(err);
+            res.render('admin/list', {
+                layout: 'adminLayout',
+                entities: users,
+                singleName: 'user',
+                pluralName: 'users',
+                display: function(user) {
+                    return user.email;                        
+                }
+            });
+        });
+     });
 };

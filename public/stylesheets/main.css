@@ -412,8 +412,11 @@ form label {
 #crudContent table td {
     color: #444;
 }
-
+/*
 tr.odd {
+    background: #BECCE7 !important;
+}*/
+tr:nth-child(odd) {
     background: #BECCE7 !important;
 }
 
